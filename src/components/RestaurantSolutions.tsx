@@ -1,80 +1,93 @@
-import { Utensils, Clock, Star, ShoppingBag, CreditCard } from 'lucide-react';
+import React from 'react';
+import { UtensilsCrossed, Smartphone, Map, Star, ArrowUpRight } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const RestaurantSolutions = () => {
-  const integrations = [
-    { name: 'DoorDash', icon: <ShoppingBag className="w-5 h-5" />, color: 'bg-[#FF3008]' },
-    { name: 'GrubHub', icon: <Utensils className="w-5 h-5" />, color: 'bg-[#FF0016]' },
-    { name: 'UberEats', icon: <ShoppingBag className="w-5 h-5" />, color: 'bg-black' },
-    { name: 'Toast', icon: <CreditCard className="w-5 h-5" />, color: 'bg-[#FF5A00]' },
+  const features = [
+    {
+      icon: <UtensilsCrossed className="text-[#00D1FF]" />,
+      title: "Menu Integration",
+      description: "Interactive 3D menus that showcase your dishes with vivid detail."
+    },
+    {
+      icon: <Smartphone className="text-[#00D1FF]" />,
+      title: "Third-party Delivery",
+      description: "Seamless connections with GrubHub, DoorDash, and UberEats."
+    },
+    {
+      icon: <Map className="text-[#00D1FF]" />,
+      title: "Local SEO",
+      description: "Be found by hungry customers with optimized local search rankings."
+    },
+    {
+      icon: <Star className="text-[#00D1FF]" />,
+      title: "Review Management",
+      description: "Automated systems to collect and display your best customer reviews."
+    }
   ];
 
   return (
-    <section id="restaurants" className="py-24 bg-gradient-to-b from-[#050505] to-background">
-      <div className="container mx-auto px-6">
-        <div className="flex flex-col lg:flex-row gap-16 items-center">
-          <div className="lg:w-1/2">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold uppercase tracking-widest mb-6">
-              <Utensils size={14} />
-              Hospitality OS
-            </div>
-            <h2 className="text-4xl md:text-6xl font-black mb-6">
-              Your Restaurant, <br />
-              <span className="gradient-text">Fully Automated.</span>
+    <section className="py-24 px-6 bg-[#050505]">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+          <div>
+            <h2 className="text-4xl md:text-5xl font-bold mb-8 leading-tight">
+              Specialized Solutions for <br />
+              <span className="gradient-text">Modern Restaurants</span>
             </h2>
-            <p className="text-gray-400 text-lg mb-8">
-              We build specialized 3D websites for restaurants that integrate directly with your POS and delivery partners. Stop paying high commissions and start owning your customer experience.
+            <p className="text-white/60 text-lg mb-12 leading-relaxed">
+              We understand the unique challenges of the food industry. Our platform integrates with the tools you already use while providing a world-class 3D experience that drives reservations and orders.
             </p>
-
-            <div className="space-y-6 mb-10">
-              <div className="flex gap-4">
-                <div className="w-12 h-12 shrink-0 rounded-full bg-white/5 border border-white/10 flex items-center justify-center">
-                  <Clock className="text-primary" />
-                </div>
-                <div>
-                  <h4 className="font-bold">Real-time Table Booking</h4>
-                  <p className="text-sm text-gray-500">Integrated reservation systems that sync with your floor management.</p>
-                </div>
-              </div>
-              <div className="flex gap-4">
-                <div className="w-12 h-12 shrink-0 rounded-full bg-white/5 border border-white/10 flex items-center justify-center">
-                  <Star className="text-secondary" />
-                </div>
-                <div>
-                  <h4 className="font-bold">Review Harvesting</h4>
-                  <p className="text-sm text-gray-500">Automatically pull and showcase 5-star reviews from Google, Yelp, and Facebook.</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="flex flex-wrap gap-4">
-              {integrations.map((item) => (
-                <div key={item.name} className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-white/10">
-                  <div className={`p-1.5 rounded ${item.color}`}>
-                    {item.icon}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+              {features.map((feature, i) => (
+                <motion.div
+                  key={feature.title}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="mb-4 p-3 w-fit bg-[#00D1FF]/10 rounded-xl">
+                    {feature.icon}
                   </div>
-                  <span className="text-xs font-bold uppercase tracking-tighter">{item.name}</span>
-                </div>
+                  <h4 className="text-xl font-bold mb-2">{feature.title}</h4>
+                  <p className="text-white/40 text-sm leading-relaxed">{feature.description}</p>
+                </motion.div>
               ))}
             </div>
           </div>
 
-          <div className="lg:w-1/2 relative">
-            <div className="aspect-square bg-gradient-to-br from-primary/20 to-secondary/20 rounded-3xl overflow-hidden border border-white/10 relative group">
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-64 h-96 glass-card p-6 transform -rotate-12 group-hover:rotate-0 transition-transform duration-500">
-                  <div className="w-full h-32 bg-gray-800 rounded-xl mb-4 overflow-hidden">
-                    <div className="w-full h-full bg-[url('https://images.unsplash.com/photo-1514326640560-7d063ef2aed5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80')] bg-cover bg-center" />
+          <div className="relative">
+            <div className="absolute -inset-4 bg-gradient-to-r from-[#00D1FF]/20 to-[#A855F7]/20 blur-3xl opacity-30 rounded-full" />
+            <div className="relative rounded-[40px] border border-white/10 bg-white/5 p-4 overflow-hidden group">
+              <img 
+                src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=1200" 
+                alt="Restaurant Interior" 
+                className="rounded-[32px] w-full h-[600px] object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80" />
+              <div className="absolute bottom-12 left-12 right-12">
+                <div className="p-8 rounded-3xl bg-black/60 backdrop-blur-xl border border-white/10">
+                  <div className="flex justify-between items-start mb-4">
+                    <div>
+                      <h4 className="text-2xl font-bold">Lumina Bistro</h4>
+                      <p className="text-[#00D1FF] text-sm">Fine Dining • 3D Menu Active</p>
+                    </div>
+                    <div className="bg-white/10 p-2 rounded-full">
+                      <ArrowUpRight size={24} />
+                    </div>
                   </div>
-                  <div className="h-4 w-3/4 bg-gray-700 rounded mb-2" />
-                  <div className="h-3 w-1/2 bg-gray-800 rounded mb-6" />
-                  <div className="space-y-2">
-                    <div className="h-2 w-full bg-gray-800 rounded" />
-                    <div className="h-2 w-full bg-gray-800 rounded" />
-                    <div className="h-2 w-2/3 bg-gray-800 rounded" />
+                  <div className="flex gap-1 text-[#00D1FF] mb-6">
+                    <Star size={16} fill="currentColor" />
+                    <Star size={16} fill="currentColor" />
+                    <Star size={16} fill="currentColor" />
+                    <Star size={16} fill="currentColor" />
+                    <Star size={16} fill="currentColor" />
+                    <span className="text-white/50 text-xs ml-2">4.9 (500+ reviews)</span>
                   </div>
-                  <div className="mt-auto pt-8">
-                    <div className="w-full h-10 bg-primary rounded-lg animate-pulse" />
-                  </div>
+                  <button className="w-full py-3 rounded-xl bg-white text-black font-bold text-sm">
+                    View Demo Site
+                  </button>
                 </div>
               </div>
             </div>

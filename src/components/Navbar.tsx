@@ -1,126 +1,109 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Sparkles } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { Layers, Menu, X } from 'lucide-react';
+import { clsx, type ClassValue } from 'clsx';
+import { twMerge } from 'tailwind-merge';
+
+function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState('');
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-
-      // Active section detection
-      const sections = ['why-us', 'services', 'restaurants', 'templates', 'contact'];
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          if (rect.top <= 100 && rect.bottom >= 100) {
-            setActiveSection(section);
-            break;
-          }
-        }
-      }
+      setIsScrolled(window.scrollY > 20);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const navLinks = [
-    { name: 'Why Us', href: '#why-us', id: 'why-us' },
-    { name: 'Services', href: '#services', id: 'services' },
-    { name: 'Restaurant OS', href: '#restaurants', id: 'restaurants' },
-    { name: 'Templates', href: '#templates', id: 'templates' },
+    { name: 'Home', path: '/' },
+    { name: 'Services', path: '/#services' },
+    { name: 'Templates', path: '/templates' },
+    { name: 'Contact', path: '/#contact' },
   ];
 
-  const handleNavClick = (href: string) => {
-    setIsOpen(false);
-    if (location.pathname !== '/') {
-      window.location.href = '/' + href;
-      return;
+  const isActive = (path: string) => {
+    if (path.includes('#')) {
+      return location.pathname === '/' && location.hash === path.substring(1);
     }
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    return location.pathname === path;
   };
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-background/80 backdrop-blur-md border-b border-white/10 py-3' : 'bg-transparent py-5'}`}>
-      <div className="container mx-auto px-6 flex justify-between items-center">
-        {/* Simplified Logo: Icon + Text together as one unit */}
-        <Link to="/" className="flex items-center gap-2 group" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-          <div className="flex items-center gap-2 px-3 py-1 bg-white/5 rounded-lg border border-white/10 group-hover:border-primary/50 transition-colors">
-            <Sparkles className="text-primary w-5 h-5 group-hover:rotate-12 transition-transform" />
-            <span className="font-bold text-xl tracking-tighter uppercase">Brightsite</span>
+    <nav className={cn(
+      "fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 py-4",
+      isScrolled ? "bg-black/80 backdrop-blur-md border-b border-white/10" : "bg-transparent"
+    )}>
+      <div className="max-w-7xl mx-auto flex items-center justify-between">
+        <Link to="/" className="flex items-center gap-2 group">
+          <div className="w-10 h-10 bg-gradient-to-br from-[#00D1FF] to-[#A855F7] rounded-lg flex items-center justify-center text-white shadow-[0_0_20px_rgba(0,209,255,0.3)] group-hover:scale-110 transition-transform">
+            <Layers size={24} />
           </div>
+          {/* Logo text removed as per requirement */}
         </Link>
 
-        {/* Desktop Nav */}
+        {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
-            <button
+            <Link
               key={link.name}
-              onClick={() => handleNavClick(link.href)}
-              className={`text-sm font-medium transition-colors cursor-pointer relative py-1 ${activeSection === link.id ? 'text-primary' : 'text-gray-300 hover:text-primary'}`}
+              to={link.path}
+              className={cn(
+                "text-sm font-medium transition-colors hover:text-[#00D1FF]",
+                isActive(link.path) ? "text-[#00D1FF]" : "text-white/70"
+              )}
             >
               {link.name}
-              {activeSection === link.id && (
-                <motion.div 
-                  layoutId="activeNav"
-                  className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary"
-                  initial={false}
-                />
-              )}
-            </button>
+            </Link>
           ))}
-          <button 
-            onClick={() => handleNavClick('#contact')}
-            className="px-6 py-2 bg-primary text-black rounded-full text-sm font-bold transition-all hover:scale-105 active:scale-95 shadow-lg shadow-primary/20"
+          <a
+            href="#contact"
+            className="px-5 py-2 rounded-full bg-gradient-to-r from-[#00D1FF] to-[#A855F7] text-white text-sm font-semibold hover:opacity-90 transition-opacity"
           >
             Get Started
-          </button>
+          </a>
         </div>
 
         {/* Mobile Menu Toggle */}
-        <button className="md:hidden text-white" onClick={() => setIsOpen(!isOpen)}>
-          {isOpen ? <X size={28} /> : <Menu size={28} />}
+        <button
+          className="md:hidden text-white"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        >
+          {isMobileMenuOpen ? <X /> : <Menu />}
         </button>
       </div>
 
-      {/* Mobile Nav */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-background/95 backdrop-blur-xl border-b border-white/10 overflow-hidden"
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden absolute top-full left-0 right-0 bg-black/95 border-b border-white/10 px-6 py-8 flex flex-col gap-6 animate-in slide-in-from-top duration-300">
+          {navLinks.map((link) => (
+            <Link
+              key={link.name}
+              to={link.path}
+              className={cn(
+                "text-lg font-medium transition-colors",
+                isActive(link.path) ? "text-[#00D1FF]" : "text-white/70"
+              )}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              {link.name}
+            </Link>
+          ))}
+          <a
+            href="#contact"
+            className="w-full text-center px-5 py-3 rounded-xl bg-gradient-to-r from-[#00D1FF] to-[#A855F7] text-white font-semibold"
+            onClick={() => setIsMobileMenuOpen(false)}
           >
-            <div className="flex flex-col p-6 gap-4">
-              {navLinks.map((link) => (
-                <button
-                  key={link.name}
-                  onClick={() => handleNavClick(link.href)}
-                  className={`text-left text-lg font-medium py-2 border-b border-white/5 ${activeSection === link.id ? 'text-primary' : 'text-gray-300'}`}
-                >
-                  {link.name}
-                </button>
-              ))}
-              <button 
-                onClick={() => handleNavClick('#contact')}
-                className="btn-primary mt-4 text-center"
-              >
-                Hire Us
-              </button>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            Get Started
+          </a>
+        </div>
+      )}
     </nav>
   );
 };

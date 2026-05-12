@@ -1,56 +1,29 @@
-@import "tailwindcss";
-
-@theme {
-  --color-background: #0a0a0a;
-  --color-primary: #00D1FF;
-  --color-secondary: #A855F7;
-  --color-accent: #3b82f6;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
   color-scheme: dark;
 }
 
 body {
-  @apply bg-background text-white selection:bg-primary/30;
   margin: 0;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background-color: #030303;
+  color: white;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
   overflow-x: hidden;
 }
 
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: #0a0a0a;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #1f2937;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #3b82f6;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 .gradient-text {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary;
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-[#00D1FF] to-[#A855F7];
 }
 
-.glass-card {
-  @apply bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl;
-}
-
-.btn-primary {
-  @apply px-8 py-3 bg-gradient-to-r from-primary to-secondary text-white font-bold rounded-full hover:opacity-90 transition-all transform hover:scale-105 active:scale-95 shadow-lg shadow-primary/20;
-}
-
-.btn-outline {
-  @apply px-8 py-3 border-2 border-white/20 text-white font-bold rounded-full hover:bg-white/10 transition-all transform hover:scale-105 active:scale-95;
+.bg-dark-gradient {
+  background: linear-gradient(135deg, #030303 0%, #0a0a0a 100%);
 }

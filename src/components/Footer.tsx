@@ -1,86 +1,75 @@
-
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { Sparkles, MessageSquare, Send, Camera, Globe } from 'lucide-react';
+import { Layers, Linkedin, Twitter, Instagram, Mail, Phone, MapPin } from 'lucide-react';
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
-
   return (
-    <footer className="bg-background pt-24 pb-12 border-t border-white/5">
-      <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-          <div className="lg:col-span-1">
-            <Link to="/" className="flex items-center gap-2 mb-6 group">
-              <div className="w-8 h-8 bg-gradient-to-tr from-primary to-secondary rounded-lg flex items-center justify-center shadow-lg shadow-primary/20 group-hover:rotate-12 transition-transform">
-                <Sparkles className="text-white w-5 h-5" />
-              </div>
-              <span className="font-bold text-xl tracking-tighter">BRIGHTSITE</span>
-            </Link>
-            <p className="text-gray-500 text-sm mb-6">
-              The world's first AI-native website building agency. Immersive 3D experiences, autonomous agents, and unlimited growth.
-            </p>
-            <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-primary/20 hover:text-primary transition-all">
-                <Send size={18} />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-primary/20 hover:text-primary transition-all">
-                <MessageSquare size={18} />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-primary/20 hover:text-primary transition-all">
-                <Camera size={18} />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-primary/20 hover:text-primary transition-all">
-                <Globe size={18} />
-              </a>
+    <footer className="bg-black border-t border-white/10 pt-20 pb-10 px-6">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+        <div className="col-span-1 md:col-span-1">
+          <Link to="/" className="flex items-center gap-2 mb-6">
+            <div className="w-8 h-8 bg-gradient-to-br from-[#00D1FF] to-[#A855F7] rounded flex items-center justify-center text-white">
+              <Layers size={18} />
             </div>
-          </div>
-
-          <div>
-            <h4 className="font-bold mb-6 uppercase tracking-widest text-xs text-gray-400">Solutions</h4>
-            <ul className="space-y-4 text-sm text-gray-500">
-              <li><a href="#restaurants" className="hover:text-primary transition-colors">Restaurant OS</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Retail Nexus</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Professional Aura</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Custom Build</a></li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="font-bold mb-6 uppercase tracking-widest text-xs text-gray-400">Company</h4>
-            <ul className="space-y-4 text-sm text-gray-500">
-              <li><a href="#why-us" className="hover:text-primary transition-colors">About Us</a></li>
-              <li><a href="#templates" className="hover:text-primary transition-colors">Templates</a></li>
-              <li><a href="#services" className="hover:text-primary transition-colors">Pricing</a></li>
-              <li><Link to="/privacy-policy" className="hover:text-primary transition-colors">Privacy Policy</Link></li>
-              <li><Link to="/terms-and-conditions" className="hover:text-primary transition-colors">Terms of Service</Link></li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="font-bold mb-6 uppercase tracking-widest text-xs text-gray-400">Newsletter</h4>
-            <p className="text-xs text-gray-600 mb-4 uppercase tracking-tighter">Stay updated with the future of the web.</p>
-            <div className="flex gap-2">
-              <input 
-                type="email" 
-                placeholder="email@company.com" 
-                className="bg-white/5 border border-white/10 rounded-lg px-4 py-2 text-sm focus:outline-none focus:border-primary/50 flex-1"
-              />
-              <button className="bg-primary text-black font-bold p-2 rounded-lg">
-                <Sparkles size={18} />
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
-          <p className="text-gray-600 text-xs font-medium uppercase tracking-widest">
-            © {currentYear} BRIGHTSITE AI AGENCY. ALL RIGHTS RESERVED.
+            <span className="text-xl font-bold tracking-tight">BRIGHTSITE</span>
+          </Link>
+          <p className="text-white/50 text-sm leading-relaxed mb-8">
+            Building the next generation of 3D immersive web experiences. AI-powered design and development for modern businesses.
           </p>
-          <div className="flex items-center gap-2">
-             <div className="w-2 h-2 bg-green-500 rounded-full" />
-             <span className="text-[10px] text-gray-500 font-bold uppercase tracking-tighter">All Systems Operational</span>
+          <div className="flex items-center gap-4">
+            <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/50 hover:text-[#00D1FF] hover:border-[#00D1FF] transition-all">
+              <Twitter size={18} />
+            </a>
+            <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/50 hover:text-[#00D1FF] hover:border-[#00D1FF] transition-all">
+              <Linkedin size={18} />
+            </a>
+            <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/50 hover:text-[#00D1FF] hover:border-[#00D1FF] transition-all">
+              <Instagram size={18} />
+            </a>
           </div>
         </div>
+
+        <div>
+          <h4 className="text-white font-semibold mb-6">Services</h4>
+          <ul className="space-y-4 text-sm text-white/50">
+            <li><a href="#" className="hover:text-white transition-colors">3D Website Design</a></li>
+            <li><a href="#" className="hover:text-white transition-colors">AI Integrations</a></li>
+            <li><a href="#" className="hover:text-white transition-colors">Restaurant Solutions</a></li>
+            <li><a href="#" className="hover:text-white transition-colors">SEO Optimization</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 className="text-white font-semibold mb-6">Company</h4>
+          <ul className="space-y-4 text-sm text-white/50">
+            <li><Link to="/templates" className="hover:text-white transition-colors">Templates</Link></li>
+            <li><Link to="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
+            <li><Link to="/terms-and-conditions" className="hover:text-white transition-colors">Terms & Conditions</Link></li>
+            <li><a href="#" className="hover:text-white transition-colors">Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 className="text-white font-semibold mb-6">Contact Us</h4>
+          <ul className="space-y-4 text-sm text-white/50">
+            <li className="flex items-center gap-3">
+              <Mail size={16} className="text-[#00D1FF]" />
+              <span>info@brightsiteagency.com</span>
+            </li>
+            <li className="flex items-center gap-3">
+              <Phone size={16} className="text-[#00D1FF]" />
+              <span>+1 (555) 123-4567</span>
+            </li>
+            <li className="flex items-center gap-3">
+              <MapPin size={16} className="text-[#00D1FF]" />
+              <span>New York, NY</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div className="max-w-7xl mx-auto pt-8 border-t border-white/5 text-center text-white/30 text-xs">
+        <p>© {new Date().getFullYear()} Brightsite AI Agency. All rights reserved.</p>
       </div>
     </footer>
   );
