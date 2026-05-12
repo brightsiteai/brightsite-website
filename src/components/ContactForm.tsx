@@ -99,6 +99,31 @@ const ContactForm = () => {
           </button>
         </form>
 
+        <div className="mt-8 text-center">
+          <p className="text-white/30 text-sm mb-4">or</p>
+          <a
+            href="https://cal.com/brightsiteagency"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl border border-[#00D1FF]/50 text-[#00D1FF] font-semibold hover:bg-[#00D1FF]/10 transition-all"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+            Schedule a Call
+          </a>
+        </div>
+
+        {/* Cal.com Embed Container */}
+        <div className="mt-16">
+          <div
+            data-cal-link="brightsiteagency"
+            data-cal-config='{"theme":"dark"}'
+            style={{ width: '100%', height: '600px' }}
+          ></div>
+          <script src="https://assets.cal.com/assets/embed.js" async></script>
+        </div>
+
         <AnimatePresence>
           {isSubmitted && (
             <motion.div
