@@ -14,7 +14,7 @@ const Navbar = () => {
       setScrolled(window.scrollY > 20);
 
       // Active section detection
-      const sections = ['why-us', 'services', 'restaurants', 'templates', 'contact'];
+      const sections = ['why-us', 'restaurants', 'templates', 'pricing', 'contact'];
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
@@ -32,9 +32,9 @@ const Navbar = () => {
 
   const navLinks = [
     { name: 'Why Us', href: '#why-us', id: 'why-us' },
-    { name: 'Services', href: '#services', id: 'services' },
-    { name: 'Restaurant OS', href: '#restaurants', id: 'restaurants' },
+    { name: 'Solutions', href: '#restaurants', id: 'restaurants' },
     { name: 'Templates', href: '#templates', id: 'templates' },
+    { name: 'Pricing', href: '#pricing', id: 'pricing' },
   ];
 
   const handleNavClick = (href: string) => {

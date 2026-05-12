@@ -16,6 +16,7 @@ const Home = () => (
     <Hero />
     <WhyChooseUs />
     <RestaurantSolutions />
+    <TemplateShowcase />
     <Pricing />
     <ContactForm />
   </main>
