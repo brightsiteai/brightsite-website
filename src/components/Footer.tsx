@@ -32,10 +32,10 @@ const Footer = () => {
         <div>
           <h4 className="text-white font-semibold mb-6">Services</h4>
           <ul className="space-y-4 text-sm text-white/50">
-            <li><a href="#" className="hover:text-white transition-colors">3D Website Design</a></li>
-            <li><a href="#" className="hover:text-white transition-colors">AI Integrations</a></li>
-            <li><a href="#" className="hover:text-white transition-colors">Restaurant Solutions</a></li>
-            <li><a href="#" className="hover:text-white transition-colors">SEO Optimization</a></li>
+            <li><a href="#services" className="hover:text-white transition-colors">3D Website Design</a></li>
+            <li><a href="#services" className="hover:text-white transition-colors">AI Integrations</a></li>
+            <li><a href="#services" className="hover:text-white transition-colors">Restaurant Solutions</a></li>
+            <li><a href="#services" className="hover:text-white transition-colors">SEO Optimization</a></li>
           </ul>
         </div>
 
@@ -45,7 +45,7 @@ const Footer = () => {
             <li><Link to="/templates" className="hover:text-white transition-colors">Templates</Link></li>
             <li><Link to="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
             <li><Link to="/terms-and-conditions" className="hover:text-white transition-colors">Terms & Conditions</Link></li>
-            <li><a href="#" className="hover:text-white transition-colors">Contact</a></li>
+            <li><a href="#contact" className="hover:text-white transition-colors">Contact</a></li>
           </ul>
         </div>
 

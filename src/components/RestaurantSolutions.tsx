@@ -85,7 +85,10 @@ const RestaurantSolutions = () => {
                     <Star size={16} fill="currentColor" />
                     <span className="text-white/50 text-xs ml-2">4.9 (500+ reviews)</span>
                   </div>
-                  <button className="w-full py-3 rounded-xl bg-white text-black font-bold text-sm">
+                  <button 
+                    onClick={() => alert('Demo Site loading... Please wait for agent provisioning.')}
+                    className="w-full py-3 rounded-xl bg-white text-black font-bold text-sm hover:bg-gray-200 transition-colors"
+                  >
                     View Demo Site
                   </button>
                 </div>

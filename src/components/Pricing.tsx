@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Check, ArrowRight } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Pricing = () => {
+  const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
+
   const plans = [
     {
       name: "Seed",
@@ -33,7 +35,7 @@ const Pricing = () => {
 
   const carePlans = [
     { name: "Starter Care", price: "99" },
-    { name: "Premium Care", price: "249" },
+    { name: "Professional Care", price: "249" },
     { name: "Elite Care", price: "499" },
   ];
 
@@ -45,6 +47,18 @@ const Pricing = () => {
           <p className="text-white/50 max-w-2xl mx-auto text-lg">
             Choose the plan that fits your vision. All plans include our signature 3D design and AI-driven workflow.
           </p>
+          <AnimatePresence>
+            {selectedPlan && (
+              <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                className="mt-8 inline-block px-6 py-3 rounded-2xl bg-[#00D1FF]/10 border border-[#00D1FF]/30 text-[#00D1FF] font-semibold"
+              >
+                You've selected the <span className="font-bold underline">{selectedPlan}</span> Plan
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
@@ -55,7 +69,14 @@ const Pricing = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
               viewport={{ once: true }}
-              className={`p-8 rounded-3xl border ${plan.popular ? 'border-[#00D1FF] bg-[#00D1FF]/5' : 'border-white/10 bg-white/5'} relative flex flex-col`}
+              onClick={() => setSelectedPlan(plan.name)}
+              className={`p-8 rounded-3xl border cursor-pointer transition-all duration-300 ${
+                selectedPlan === plan.name 
+                  ? 'border-[#00D1FF] bg-[#00D1FF]/10 scale-[1.02] shadow-[0_0_30px_rgba(0,209,255,0.2)]' 
+                  : plan.popular 
+                    ? 'border-[#00D1FF]/30 bg-[#00D1FF]/5' 
+                    : 'border-white/10 bg-white/5 hover:border-white/20'
+              } relative flex flex-col`}
             >
               {plan.popular && (
                 <span className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-[#00D1FF] text-black text-xs font-bold rounded-full uppercase tracking-widest">
@@ -76,8 +97,14 @@ const Pricing = () => {
                   </li>
                 ))}
               </ul>
-              <button className={`w-full py-4 rounded-xl font-bold transition-all ${plan.popular ? 'bg-[#00D1FF] text-black hover:bg-[#00D1FF]/80' : 'bg-white/10 text-white hover:bg-white/20'}`}>
-                Get Started
+              <button 
+                className={`w-full py-4 rounded-xl font-bold transition-all ${
+                  selectedPlan === plan.name 
+                    ? 'bg-[#00D1FF] text-black' 
+                    : 'bg-white/10 text-white hover:bg-white/20'
+                }`}
+              >
+                {selectedPlan === plan.name ? 'Plan Selected' : 'Select Plan'}
               </button>
             </motion.div>
           ))}
@@ -92,7 +119,11 @@ const Pricing = () => {
               </p>
               <div className="space-y-6">
                 {carePlans.map(plan => (
-                  <div key={plan.name} className="flex items-center justify-between p-4 bg-black/40 rounded-2xl border border-white/5">
+                  <div 
+                    key={plan.name} 
+                    className="flex items-center justify-between p-4 bg-black/40 rounded-2xl border border-white/5 hover:border-[#00D1FF]/30 transition-colors cursor-pointer"
+                    onClick={() => setSelectedPlan(`${plan.name} (Monthly)`)}
+                  >
                     <span className="font-semibold">{plan.name}</span>
                     <span className="text-[#00D1FF] font-bold">${plan.price}/mo</span>
                   </div>
@@ -108,7 +139,10 @@ const Pricing = () => {
               <div className="text-center mb-8">
                 <span className="text-3xl font-bold">$10K+</span>
               </div>
-              <button className="w-full py-4 rounded-xl border border-[#00D1FF] text-[#00D1FF] font-bold hover:bg-[#00D1FF] hover:text-black transition-all flex items-center justify-center gap-2">
+              <button 
+                onClick={() => setSelectedPlan('Custom')}
+                className="w-full py-4 rounded-xl border border-[#00D1FF] text-[#00D1FF] font-bold hover:bg-[#00D1FF] hover:text-black transition-all flex items-center justify-center gap-2"
+              >
                 Consultation <ArrowRight size={18} />
               </button>
             </div>

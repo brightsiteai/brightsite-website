@@ -23,9 +23,6 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Prepare for Surge (SPA routing)
-        run: cp dist/index.html dist/200.html
-
       - name: Deploy to Surge
         run: |
           npm install -g surge

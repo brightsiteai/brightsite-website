@@ -11,28 +11,45 @@ function cn(...inputs: ClassValue[]) {
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('');
   const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
+
+      if (location.pathname === '/') {
+        const sections = ['services', 'contact'];
+        const current = sections.find(section => {
+          const element = document.getElementById(section);
+          if (element) {
+            const rect = element.getBoundingClientRect();
+            return rect.top <= 100 && rect.bottom >= 100;
+          }
+          return false;
+        });
+        setActiveSection(current || '');
+      } else {
+        setActiveSection('');
+      }
     };
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [location]);
 
   const navLinks = [
-    { name: 'Home', path: '/' },
-    { name: 'Services', path: '/#services' },
-    { name: 'Templates', path: '/templates' },
-    { name: 'Contact', path: '/#contact' },
+    { name: 'Home', path: '/', hash: '' },
+    { name: 'Services', path: '/', hash: '#services' },
+    { name: 'Templates', path: '/templates', hash: '' },
+    { name: 'Contact', path: '/', hash: '#contact' },
   ];
 
-  const isActive = (path: string) => {
-    if (path.includes('#')) {
-      return location.pathname === '/' && location.hash === path.substring(1);
+  const isActive = (link: { path: string, hash: string }) => {
+    if (link.hash) {
+      return activeSection === link.hash.substring(1);
     }
-    return location.pathname === path;
+    return location.pathname === link.path && !activeSection;
   };
 
   return (
@@ -53,17 +70,20 @@ const Navbar = () => {
           {navLinks.map((link) => (
             <Link
               key={link.name}
-              to={link.path}
+              to={link.path + link.hash}
               className={cn(
-                "text-sm font-medium transition-colors hover:text-[#00D1FF]",
-                isActive(link.path) ? "text-[#00D1FF]" : "text-white/70"
+                "text-sm font-medium transition-colors hover:text-[#00D1FF] relative py-2",
+                isActive(link) ? "text-[#00D1FF]" : "text-white/70"
               )}
             >
               {link.name}
+              {isActive(link) && (
+                <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#00D1FF] to-[#A855F7]" />
+              )}
             </Link>
           ))}
           <a
-            href="#contact"
+            href="/#contact"
             className="px-5 py-2 rounded-full bg-gradient-to-r from-[#00D1FF] to-[#A855F7] text-white text-sm font-semibold hover:opacity-90 transition-opacity"
           >
             Get Started
@@ -85,10 +105,10 @@ const Navbar = () => {
           {navLinks.map((link) => (
             <Link
               key={link.name}
-              to={link.path}
+              to={link.path + link.hash}
               className={cn(
                 "text-lg font-medium transition-colors",
-                isActive(link.path) ? "text-[#00D1FF]" : "text-white/70"
+                isActive(link) ? "text-[#00D1FF]" : "text-white/70"
               )}
               onClick={() => setIsMobileMenuOpen(false)}
             >
@@ -96,7 +116,7 @@ const Navbar = () => {
             </Link>
           ))}
           <a
-            href="#contact"
+            href="/#contact"
             className="w-full text-center px-5 py-3 rounded-xl bg-gradient-to-r from-[#00D1FF] to-[#A855F7] text-white font-semibold"
             onClick={() => setIsMobileMenuOpen(false)}
           >

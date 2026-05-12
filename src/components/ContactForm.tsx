@@ -5,6 +5,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 const ContactForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    company: '',
+    message: ''
+  });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -14,7 +20,7 @@ const ContactForm = () => {
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
-      
+      setFormData({ name: '', email: '', company: '', message: '' });
       // Reset after 5 seconds
       setTimeout(() => setIsSubmitted(false), 5000);
     }, 1500);
@@ -37,6 +43,8 @@ const ContactForm = () => {
               <input
                 required
                 type="text"
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-[#00D1FF] transition-colors"
                 placeholder="John Doe"
               />
@@ -46,6 +54,8 @@ const ContactForm = () => {
               <input
                 required
                 type="email"
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-[#00D1FF] transition-colors"
                 placeholder="john@example.com"
               />
@@ -56,6 +66,8 @@ const ContactForm = () => {
             <label className="text-sm font-medium text-white/70 ml-1">Company Name</label>
             <input
               type="text"
+              value={formData.company}
+              onChange={(e) => setFormData({ ...formData, company: e.target.value })}
               className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-[#00D1FF] transition-colors"
               placeholder="Your Business"
             />
@@ -66,6 +78,8 @@ const ContactForm = () => {
             <textarea
               required
               rows={5}
+              value={formData.message}
+              onChange={(e) => setFormData({ ...formData, message: e.target.value })}
               className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-[#00D1FF] transition-colors resize-none"
               placeholder="Tell us about your project..."
             />
