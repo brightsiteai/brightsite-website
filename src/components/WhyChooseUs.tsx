@@ -15,13 +15,13 @@ const WhyChooseUs = () => {
     },
     {
       icon: <Cpu className="text-[#00D1FF]" />,
-      title: "AI-Powered",
-      description: "Smart agents handle acquisition, billing, and growth automatically."
+      title: "AI-Enhanced Experiences",
+      description: "Intelligent 3D animations and smart integrations that adapt to your visitors."
     },
     {
       icon: <Globe className="text-[#00D1FF]" />,
-      title: "Global Scalability",
-      description: "Built to grow from a local startup to a global enterprise."
+      title: "Global Visibility",
+      description: "SEO optimization and third-party integrations to reach customers everywhere."
     }
   ];
 
