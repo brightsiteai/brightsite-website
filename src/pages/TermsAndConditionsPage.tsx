@@ -1,5 +1,3 @@
-import React from 'react';
-
 const TermsAndConditionsPage = () => {
   return (
     <div className="pt-40 pb-24 px-6 min-h-screen bg-black">

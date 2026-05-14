@@ -1,6 +1,5 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
-import { Layers, Linkedin, Twitter, Instagram, Mail, Phone, MapPin } from 'lucide-react';
+import { Layers, Youtube, Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -21,10 +20,10 @@ const Footer = () => {
               <Twitter size={18} />
             </a>
             <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/50 hover:text-[#00D1FF] hover:border-[#00D1FF] transition-all">
-              <Linkedin size={18} />
+              <Instagram size={18} />
             </a>
             <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/50 hover:text-[#00D1FF] hover:border-[#00D1FF] transition-all">
-              <Instagram size={18} />
+              <Youtube size={18} />
             </a>
           </div>
         </div>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import{ useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, ShoppingBag, Utensils, Briefcase, Store, X, CheckCircle } from 'lucide-react';
 

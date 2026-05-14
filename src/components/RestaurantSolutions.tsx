@@ -1,4 +1,3 @@
-import React from 'react';
 import { UtensilsCrossed, Smartphone, Map, Star, ArrowUpRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
