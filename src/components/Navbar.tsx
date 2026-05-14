@@ -1,4 +1,4 @@
-import{ useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Layers, Menu, X } from 'lucide-react';
 import { clsx, type ClassValue } from 'clsx';
@@ -19,12 +19,12 @@ const Navbar = () => {
       setIsScrolled(window.scrollY > 20);
 
       if (location.pathname === '/') {
-        const sections = ['services', 'contact'];
+        const sections = ['why-us', 'restaurants', 'templates', 'services', 'contact'];
         const current = sections.find(section => {
           const element = document.getElementById(section);
           if (element) {
             const rect = element.getBoundingClientRect();
-            return rect.top <= 100 && rect.bottom >= 100;
+            return rect.top <= 120 && rect.bottom >= 120;
           }
           return false;
         });
@@ -39,10 +39,10 @@ const Navbar = () => {
   }, [location]);
 
   const navLinks = [
-    { name: 'Home', path: '/', hash: '' },
-    { name: 'Services', path: '/', hash: '#services' },
+    { name: 'Why Us', path: '/', hash: '#why-us' },
+    { name: 'Solutions', path: '/', hash: '#restaurants' },
     { name: 'Templates', path: '/templates', hash: '' },
-    { name: 'Contact', path: '/', hash: '#contact' },
+    { name: 'Pricing', path: '/', hash: '#services' },
   ];
 
   const isActive = (link: { path: string, hash: string }) => {

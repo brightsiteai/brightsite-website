@@ -1,4 +1,4 @@
-import{ useState } from 'react';
+import { useState } from 'react';
 import { Send, CheckCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 

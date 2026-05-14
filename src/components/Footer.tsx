@@ -7,10 +7,9 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
         <div className="col-span-1 md:col-span-1">
           <Link to="/" className="flex items-center gap-2 mb-6">
-            <div className="w-8 h-8 bg-gradient-to-br from-[#00D1FF] to-[#A855F7] rounded flex items-center justify-center text-white">
+            <div className="w-8 h-8 bg-gradient-to-br from-[#00D1FF] to-[#A855F7] rounded flex items-center justify-center text-white shadow-[0_0_15px_rgba(0,209,255,0.3)]">
               <Layers size={18} />
             </div>
-            <span className="text-xl font-bold tracking-tight">BRIGHTSITE</span>
           </Link>
           <p className="text-white/50 text-sm leading-relaxed mb-8">
             Building the next generation of 3D immersive web experiences. AI-powered design and development for modern businesses.
