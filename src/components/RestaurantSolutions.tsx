@@ -26,7 +26,7 @@ const RestaurantSolutions = () => {
   ];
 
   return (
-    <section className="py-24 px-6 bg-[#050505]">
+    <section id="restaurants" className="py-24 px-6 bg-[#050505]">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           <div>

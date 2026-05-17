@@ -26,7 +26,7 @@ const WhyChooseUs = () => {
   ];
 
   return (
-    <section className="py-24 px-6 bg-black">
+    <section id="why-us" className="py-24 px-6 bg-black">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col lg:flex-row gap-20">
           <div className="lg:w-1/3">

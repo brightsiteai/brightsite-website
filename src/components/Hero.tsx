@@ -30,7 +30,7 @@ const DistortedSphere = () => {
 
 const Hero = () => {
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden pt-20">
+    <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden pt-20">
       {/* Three.js Background */}
       <div className="absolute inset-0 z-0">
         <Canvas camera={{ position: [0, 0, 5], fov: 75 }}>

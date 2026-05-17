@@ -19,34 +19,38 @@ const Navbar = () => {
       setIsScrolled(window.scrollY > 20);
 
       if (location.pathname === '/') {
-        const sections = ['why-us', 'restaurants', 'templates', 'services', 'contact'];
+        const sections = ['home', 'why-us', 'restaurants', 'services', 'contact'];
         const current = sections.find(section => {
           const element = document.getElementById(section);
           if (element) {
             const rect = element.getBoundingClientRect();
-            return rect.top <= 120 && rect.bottom >= 120;
+            // Using a dynamic range for active state
+            return rect.top <= 150 && rect.bottom >= 150;
           }
           return false;
         });
-        setActiveSection(current || '');
+        setActiveSection(current || 'home');
       } else {
         setActiveSection('');
       }
     };
 
     window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Call once on mount
     return () => window.removeEventListener('scroll', handleScroll);
   }, [location]);
 
   const navLinks = [
+    { name: 'Home', path: '/', hash: '#home' },
     { name: 'Why Us', path: '/', hash: '#why-us' },
     { name: 'Solutions', path: '/', hash: '#restaurants' },
+    { name: 'Services', path: '/', hash: '#services' },
     { name: 'Templates', path: '/templates', hash: '' },
-    { name: 'Pricing', path: '/', hash: '#services' },
+    { name: 'Contact', path: '/', hash: '#contact' },
   ];
 
   const isActive = (link: { path: string, hash: string }) => {
-    if (link.hash) {
+    if (link.hash && location.pathname === '/') {
       return activeSection === link.hash.substring(1);
     }
     return location.pathname === link.path && !activeSection;
@@ -62,7 +66,6 @@ const Navbar = () => {
           <div className="w-10 h-10 bg-gradient-to-br from-[#00D1FF] to-[#A855F7] rounded-lg flex items-center justify-center text-white shadow-[0_0_20px_rgba(0,209,255,0.3)] group-hover:scale-110 transition-transform">
             <Layers size={24} />
           </div>
-          {/* Logo text removed as per requirement */}
         </Link>
 
         {/* Desktop Links */}
