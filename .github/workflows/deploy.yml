@@ -17,7 +17,3 @@ jobs:
         run: npm install
       - name: Build
         run: npm run build
-      - name: Deploy to Surge
-        run: |
-          npm install -g surge
-          surge dist brightsite-main.surge.sh --token ${{ secrets.SURGE_TOKEN }}
