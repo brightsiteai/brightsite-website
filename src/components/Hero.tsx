@@ -1,11 +1,15 @@
 import { useRef } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
+import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { Sphere, MeshDistortMaterial, OrbitControls, Float } from '@react-three/drei';
 import * as THREE from 'three';
 import { motion } from 'framer-motion';
 
 const DistortedSphere = () => {
   const meshRef = useRef<THREE.Mesh>(null);
+  const { viewport } = useThree();
+  
+  // Responsive scale based on viewport width
+  const responsiveScale = Math.min(viewport.width * 0.4, 2.5);
 
   useFrame((state) => {
     if (meshRef.current) {
@@ -15,7 +19,7 @@ const DistortedSphere = () => {
   });
 
   return (
-    <Sphere args={[1, 100, 200]} ref={meshRef} scale={2.5}>
+    <Sphere args={[1, 100, 200]} ref={meshRef} scale={responsiveScale}>
       <MeshDistortMaterial
         color="#00D1FF"
         attach="material"
