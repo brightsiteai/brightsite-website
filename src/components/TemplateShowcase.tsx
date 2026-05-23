@@ -32,18 +32,18 @@ const TemplateShowcase = () => {
 
   return (
     <section id="templates" className="py-24 bg-[#080808]">
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
           <div className="md:w-2/3">
             <h2 className="text-4xl md:text-6xl font-black mb-4">World-Class <span className="gradient-text">Foundations.</span></h2>
-            <p className="text-gray-400">Choose a proven structure and watch us transform it into your unique digital environment.</p>
+            <p className="text-gray-400 text-base md:text-lg">Choose a proven structure and watch us transform it into your unique digital environment.</p>
           </div>
-          <button className="btn-outline flex items-center gap-2">
+          <button className="btn-outline flex items-center gap-2 text-sm md:text-base">
             View All Templates <ExternalLink size={18} />
           </button>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12">
           {templates.map((temp, i) => (
             <motion.div
               key={temp.name}
@@ -59,8 +59,8 @@ const TemplateShowcase = () => {
                   alt={temp.name}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60" />
-                <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-40" />
+                <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                   <div className="bg-white text-black font-bold px-6 py-3 rounded-full flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-transform">
                     Preview Template <MousePointer2 size={18} />
                   </div>

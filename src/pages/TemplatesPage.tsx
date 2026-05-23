@@ -55,16 +55,16 @@ const TemplatesPage = () => {
   };
 
   return (
-    <div className="pt-32 pb-24 px-6 min-h-screen bg-black">
+    <div className="pt-32 pb-24 px-4 md:px-6 min-h-screen bg-black">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-20">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">Our <span className="gradient-text">Templates</span></h1>
-          <p className="text-white/50 max-w-2xl mx-auto text-lg">
+        <div className="text-center mb-12 md:mb-20">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6">Our <span className="gradient-text">Templates</span></h1>
+          <p className="text-white/50 max-w-2xl mx-auto text-base md:text-lg">
             Start with a foundation built for your industry. Each template is fully customizable and powered by our AI agents.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
           {templates.map((template, i) => (
             <motion.div
               key={template.title}
@@ -79,10 +79,10 @@ const TemplatesPage = () => {
                 <img 
                   src={template.image} 
                   alt={template.title} 
-                  className="w-full h-full object-cover grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-all duration-700"
                 />
               </div>
-              <div className="p-10">
+              <div className="p-6 md:p-10">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="p-2 bg-[#00D1FF]/10 rounded-lg">
                     {template.icon}
@@ -91,8 +91,8 @@ const TemplatesPage = () => {
                     {template.category}
                   </span>
                 </div>
-                <h3 className="text-3xl font-bold mb-4">{template.title}</h3>
-                <p className="text-white/50 mb-8 leading-relaxed">
+                <h3 className="text-2xl md:text-3xl font-bold mb-4">{template.title}</h3>
+                <p className="text-white/50 mb-8 leading-relaxed text-sm md:text-base">
                   {template.description}
                 </p>
                 <div className="flex items-center justify-between">
