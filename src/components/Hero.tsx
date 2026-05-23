@@ -7,8 +7,8 @@ import { motion } from 'framer-motion';
 const DistortedSphere = () => {
   const meshRef = useRef<THREE.Mesh>(null);
   const { viewport } = useThree();
-  
-  // Responsive scale based on viewport width
+
+  // Responsive scale based on viewport width — works on all screen sizes
   const responsiveScale = Math.min(viewport.width * 0.4, 2.5);
 
   useFrame((state) => {
@@ -80,7 +80,7 @@ const Hero = () => {
       </div>
 
       {/* Scroll Indicator */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1, duration: 1 }}
