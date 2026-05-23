@@ -1,4 +1,4 @@
-name: Build Website
+name: Build and Deploy Website
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -27,3 +27,6 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      - name: Deploy to Surge
+        run: npx surge dist brightsite-main.surge.sh --token ${{ secrets.SURGE_TOKEN }}
