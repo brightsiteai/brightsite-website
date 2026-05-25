@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Send, CheckCircle } from 'lucide-react';
+import { Send, CheckCircle, Calendar } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const ContactForm = () => {
@@ -24,112 +24,146 @@ const ContactForm = () => {
   };
 
   return (
-    <section id="contact" className="py-24 px-6 bg-black">
-      <div className="max-w-3xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-6">Let's Build <span className="gradient-text">Something Great</span></h2>
-          <p className="text-white/50 text-lg">
-            Ready to elevate your digital presence? Send us a message and we'll get back to you within 24 hours.
+    <section id="contact" className="py-24 px-6 bg-background relative">
+      {/* Decorative Blur */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-1/2 bg-primary/5 blur-[120px] pointer-events-none" />
+      
+      <div className="max-w-4xl mx-auto relative z-10">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            Ready to Build <span className="gradient-text">Something Great?</span>
+          </h2>
+          <p className="text-text-secondary text-lg max-w-2xl mx-auto">
+            Whether you have a clear vision or just a spark of an idea, we're here to help you engineer the future of your digital presence.
           </p>
-        </div>
+        </motion.div>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="space-y-2">
-              <label className="text-sm font-medium text-white/70 ml-1">Full Name</label>
-              <input
-                required
-                type="text"
-                value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-[#00D1FF] transition-colors"
-                placeholder="John Doe"
-              />
-            </div>
-            <div className="space-y-2">
-              <label className="text-sm font-medium text-white/70 ml-1">Email Address</label>
-              <input
-                required
-                type="email"
-                value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-[#00D1FF] transition-colors"
-                placeholder="john@example.com"
-              />
-            </div>
-          </div>
-
-          <div className="space-y-2">
-            <label className="text-sm font-medium text-white/70 ml-1">Company Name</label>
-            <input
-              type="text"
-              value={formData.company}
-              onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-              className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-[#00D1FF] transition-colors"
-              placeholder="Your Business"
-            />
-          </div>
-
-          <div className="space-y-2">
-            <label className="text-sm font-medium text-white/70 ml-1">Message</label>
-            <textarea
-              required
-              rows={5}
-              value={formData.message}
-              onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-              className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-[#00D1FF] transition-colors resize-none"
-              placeholder="Tell us about your project..."
-            />
-          </div>
-
-          <button
-            disabled={isSubmitting || isSubmitted}
-            className="w-full py-5 rounded-2xl bg-gradient-to-r from-[#00D1FF] to-[#A855F7] text-white font-bold text-lg hover:opacity-90 transition-all flex items-center justify-center gap-3 disabled:opacity-50"
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-start">
+          <motion.div 
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="lg:col-span-3 glass-card p-8 md:p-10"
           >
-            {isSubmitting ? (
-              <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-            ) : isSubmitted ? (
-              <>Sent Successfully <CheckCircle size={24} /></>
-            ) : (
-              <>Send Message <Send size={20} /></>
-            )}
-          </button>
-        </form>
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <label className="text-xs font-black uppercase tracking-widest text-text-secondary ml-1">Full Name</label>
+                  <input
+                    required
+                    type="text"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    className="w-full bg-surface border border-primary/10 rounded-xl px-6 py-4 outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all text-text-primary"
+                    placeholder="John Doe"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-xs font-black uppercase tracking-widest text-text-secondary ml-1">Email Address</label>
+                  <input
+                    required
+                    type="email"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    className="w-full bg-surface border border-primary/10 rounded-xl px-6 py-4 outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all text-text-primary"
+                    placeholder="john@example.com"
+                  />
+                </div>
+              </div>
 
-        <div className="mt-8 text-center">
-          <p className="text-white/30 text-sm mb-4">or</p>
-          <a
-            href="https://cal.com/brightsiteagency"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl border border-[#00D1FF]/50 text-[#00D1FF] font-semibold hover:bg-[#00D1FF]/10 transition-all"
+              <div className="space-y-2">
+                <label className="text-xs font-black uppercase tracking-widest text-text-secondary ml-1">Company Name</label>
+                <input
+                  type="text"
+                  value={formData.company}
+                  onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                  className="w-full bg-surface border border-primary/10 rounded-xl px-6 py-4 outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all text-text-primary"
+                  placeholder="Your Business"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-xs font-black uppercase tracking-widest text-text-secondary ml-1">Message</label>
+                <textarea
+                  required
+                  rows={5}
+                  value={formData.message}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  className="w-full bg-surface border border-primary/10 rounded-xl px-6 py-4 outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all text-text-primary resize-none"
+                  placeholder="Tell us about your project goals..."
+                />
+              </div>
+
+              <button
+                disabled={isSubmitting || isSubmitted}
+                className="w-full btn-cta py-5 rounded-xl flex items-center justify-center gap-3 disabled:opacity-50"
+              >
+                {isSubmitting ? (
+                  <div className="w-6 h-6 border-2 border-background/30 border-t-background rounded-full animate-spin" />
+                ) : isSubmitted ? (
+                  <>Sent Successfully <CheckCircle size={24} /></>
+                ) : (
+                  <>Send Message <Send size={20} /></>
+                )}
+              </button>
+            </form>
+          </motion.div>
+
+          <motion.div 
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="lg:col-span-2 space-y-8"
           >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-            </svg>
-            Schedule a Call
-          </a>
+            <div className="glass-card p-8 border-l-4 border-l-cta">
+              <h4 className="text-xl font-bold mb-4 text-text-primary flex items-center gap-2">
+                <Calendar className="text-cta" /> Schedule a Strategy Call
+              </h4>
+              <p className="text-text-secondary text-sm mb-6 leading-relaxed">
+                Prefer a face-to-face conversation? Book a 15-minute discovery call with our solutions team to discuss your project.
+              </p>
+              <a
+                href="https://cal.com/brightsiteagency"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-cta font-bold hover:gap-4 transition-all"
+              >
+                Book Your Slot <Send size={16} />
+              </a>
+            </div>
+
+            <div className="p-8 border border-primary/10 rounded-2xl bg-surface/30">
+              <h4 className="text-sm font-black uppercase tracking-widest text-text-secondary mb-4">Direct Connect</h4>
+              <ul className="space-y-4 text-text-primary font-medium">
+                <li>
+                  <a href="mailto:hello@brightsite.agency" className="hover:text-primary transition-colors">hello@brightsite.agency</a>
+                </li>
+                <li className="text-text-secondary">
+                  Based in New York, NY <br /> Serving Clients Globally
+                </li>
+              </ul>
+            </div>
+          </motion.div>
         </div>
-        {/* Cal.com embed — set up your cal-link and remove this comment to enable:
-        <div class="mt-16" data-cal-link="your-cal-link" data-cal-config='{"theme":"dark"}' style="height:600px"></div>
-        <script src="https://assets.cal.com/assets/embed.js" async></script>
-        */}
       </div>
 
       <AnimatePresence>
         {isSubmitted && (
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 50 }}
-            className="fixed bottom-10 right-10 bg-white text-black px-8 py-4 rounded-2xl shadow-2xl flex items-center gap-4 z-[100]"
+            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.9, y: 20 }}
+            className="fixed bottom-10 right-10 bg-primary text-background px-8 py-4 rounded-xl shadow-2xl shadow-primary/20 flex items-center gap-4 z-[100] font-bold"
           >
-            <div className="bg-green-500 rounded-full p-1">
-              <CheckCircle size={20} className="text-white" />
-            </div>
+            <CheckCircle size={24} />
             <div>
-              <p className="font-bold">Message Sent!</p>
-              <p className="text-sm text-black/60">We'll be in touch soon.</p>
+              <p>Message Received!</p>
+              <p className="text-sm opacity-80 font-normal">We'll reach out within 24 hours.</p>
             </div>
           </motion.div>
         )}
