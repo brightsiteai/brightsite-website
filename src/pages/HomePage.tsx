@@ -1,63 +1,52 @@
 import Hero from '../components/Hero';
-import Pricing from '../components/Pricing';
+import Services from '../components/Services';
+import Process from '../components/Process';
 import WhyBrightsite from '../components/WhyBrightsite';
+import RestaurantSolutions from '../components/RestaurantSolutions';
+import TemplateShowcase from '../components/TemplateShowcase';
+import Pricing from '../components/Pricing';
 import ContactForm from '../components/ContactForm';
 import Testimonials from '../components/Testimonials';
 import CTA from '../components/CTA';
 
-// Placeholders for sections built by other agents
-const ServicesPlaceholder = () => (
-  <section id="services" className="py-24 bg-background flex items-center justify-center border-y border-primary/5">
-    <div className="text-center">
-      <h2 className="text-4xl font-bold opacity-20 italic">Services Section (In Development by WebsiteBuilder)</h2>
-    </div>
-  </section>
-);
-
-const ProcessPlaceholder = () => (
-  <section id="process" className="py-24 bg-surface/20 flex items-center justify-center border-y border-primary/5">
-    <div className="text-center">
-      <h2 className="text-4xl font-bold opacity-20 italic">Process Section (In Development by WebsiteBuilder-2)</h2>
-    </div>
-  </section>
-);
-
+// Placeholder for Portfolio section (to be built by WebsiteBuilder or WebsiteBuilder-3)
 const PortfolioPlaceholder = () => (
-  <section id="portfolio" className="py-24 bg-background flex items-center justify-center border-y border-primary/5">
-    <div className="text-center">
-      <h2 className="text-4xl font-bold opacity-20 italic">Portfolio Section (In Development by WebsiteBuilder-2)</h2>
+  <section id="portfolio" className="py-32 bg-background">
+    <div className="container mx-auto px-6 text-center">
+      <h2 className="text-xs uppercase tracking-[0.4em] text-primary font-bold mb-6">Case Studies</h2>
+      <h1 className="text-4xl md:text-6xl font-black mb-12 italic opacity-20">Portfolio Gallery (Coming Soon)</h1>
     </div>
   </section>
 );
 
 const HomePage = () => {
   return (
-    <main className="relative">
-      {/* 
-        Section IDs:
-        - home (in Hero)
-        - services
-        - process
-        - portfolio
-        - why-us
-        - pricing
-        - testimonials
-        - contact (in ContactForm)
-      */}
-      
+    <main className="bg-background text-text-primary overflow-x-hidden">
       <div id="home">
         <Hero />
       </div>
       
-      <ServicesPlaceholder />
+      <div id="services">
+        <Services />
+      </div>
       
-      <ProcessPlaceholder />
+      <div id="process">
+        <Process />
+      </div>
       
-      <PortfolioPlaceholder />
-      
+      <div id="portfolio">
+        <PortfolioPlaceholder />
+      </div>
+
       <div id="why-us">
         <WhyBrightsite />
       </div>
+
+      <div id="restaurants">
+        <RestaurantSolutions />
+      </div>
+
+      <TemplateShowcase />
       
       <div id="pricing">
         <Pricing />

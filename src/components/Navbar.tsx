@@ -1,19 +1,18 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Layers, Menu, X, ArrowRight } from 'lucide-react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
-  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
 
-      const sections = ['home', 'services', 'process', 'portfolio', 'why-us', 'pricing', 'testimonials', 'contact'];
+      const sections = ['home', 'services', 'process', 'portfolio', 'why-us', 'pricing', 'restaurants', 'contact'];
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
@@ -37,6 +36,7 @@ const Navbar = () => {
     { name: 'Portfolio', href: 'portfolio' },
     { name: 'Why Us', href: 'why-us' },
     { name: 'Pricing', href: 'pricing' },
+    { name: 'Solutions', href: 'restaurants' },
   ];
 
   const handleNavClick = (href: string) => {
@@ -55,7 +55,7 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
         <Link to="/" className="flex items-center group">
-          <div className="w-10 h-10 rounded-xl bg-gradient-teal flex items-center justify-center text-background shadow-lg shadow-primary/20 group-hover:scale-110 transition-transform duration-300">
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-background shadow-lg shadow-primary/20 group-hover:scale-110 transition-transform duration-300">
             <Layers className="w-6 h-6" />
           </div>
           <span className="ml-3 text-xl font-black tracking-tighter text-text-primary">
