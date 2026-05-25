@@ -1,73 +1,99 @@
 import { Link } from 'react-router-dom';
-import { Layers, Mail, Phone, MapPin, Globe, Share2, Video } from 'lucide-react';
+import { Layers, Mail, Phone, MapPin, ArrowUp } from 'lucide-react';
 
 const Footer = () => {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
-    <footer className="bg-black border-t border-white/10 pt-20 pb-10 px-6">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
-        <div className="col-span-1 md:col-span-1">
-          <Link to="/" className="flex items-center gap-2 mb-6">
-            <div className="w-8 h-8 bg-gradient-to-br from-[#00D1FF] to-[#A855F7] rounded flex items-center justify-center text-white shadow-[0_0_15px_rgba(0,209,255,0.3)]">
-              <Layers size={18} />
+    <footer className="bg-background border-t border-primary/10 pt-24 pb-12 px-6">
+      <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
+        <div className="col-span-1 lg:col-span-1">
+          <Link to="/" className="flex items-center group mb-8">
+            <div className="w-10 h-10 rounded-xl bg-gradient-teal flex items-center justify-center text-background shadow-lg shadow-primary/20 group-hover:scale-110 transition-transform duration-300">
+              <Layers className="w-6 h-6" />
             </div>
+            <span className="ml-3 text-2xl font-black tracking-tighter text-text-primary">
+              BRIGHTSITE<span className="text-primary">.</span>
+            </span>
           </Link>
-          <p className="text-white/50 text-sm leading-relaxed mb-8">
-            Building the next generation of 3D immersive web experiences. AI-powered design and development for modern businesses.
+          <p className="text-text-secondary text-sm leading-relaxed mb-8">
+            Leading the evolution of digital experiences through immersive 3D technology and AI-driven innovation. We don't just build sites; we create digital legacies.
           </p>
           <div className="flex items-center gap-4">
-            <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/50 hover:text-[#00D1FF] hover:border-[#00D1FF] transition-all">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-            </a>
-            <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/50 hover:text-[#00D1FF] hover:border-[#00D1FF] transition-all">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-            </a>
-            <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/50 hover:text-[#00D1FF] hover:border-[#00D1FF] transition-all">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-            </a>
+            {['X', 'Instagram', 'YouTube', 'LinkedIn'].map((social) => (
+              <a 
+                key={social}
+                href="#" 
+                className="w-10 h-10 rounded-lg bg-surface border border-primary/10 flex items-center justify-center text-text-secondary hover:text-primary hover:border-primary/40 transition-all duration-300"
+              >
+                <span className="sr-only">{social}</span>
+                <div className="w-5 h-5 bg-current opacity-20 rounded-sm" />
+              </a>
+            ))}
           </div>
         </div>
 
         <div>
-          <h4 className="text-white font-semibold mb-6">Services</h4>
-          <ul className="space-y-4 text-sm text-white/50">
-            <li><a href="#services" className="hover:text-white transition-colors">3D Website Design</a></li>
-            <li><a href="#services" className="hover:text-white transition-colors">AI Integrations</a></li>
-            <li><a href="#services" className="hover:text-white transition-colors">Restaurant Solutions</a></li>
-            <li><a href="#services" className="hover:text-white transition-colors">SEO Optimization</a></li>
+          <h4 className="text-text-primary font-bold text-lg mb-8">Solutions</h4>
+          <ul className="space-y-4 text-text-secondary">
+            {['3D Experiences', 'AI Integration', 'Restaurant Tech', 'Enterprise Web', 'SEO Mastery'].map((item) => (
+              <li key={item}>
+                <a href="#" className="hover:text-primary transition-colors flex items-center group">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary/40 mr-3 group-hover:w-3 transition-all" />
+                  {item}
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
 
         <div>
-          <h4 className="text-white font-semibold mb-6">Company</h4>
-          <ul className="space-y-4 text-sm text-white/50">
-            <li><Link to="/templates" className="hover:text-white transition-colors">Templates</Link></li>
-            <li><Link to="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
-            <li><Link to="/terms-and-conditions" className="hover:text-white transition-colors">Terms & Conditions</Link></li>
-            <li><a href="#contact" className="hover:text-white transition-colors">Contact</a></li>
+          <h4 className="text-text-primary font-bold text-lg mb-8">Company</h4>
+          <ul className="space-y-4 text-text-secondary">
+            <li><Link to="/templates" className="hover:text-primary transition-colors">Premium Templates</Link></li>
+            <li><Link to="/privacy-policy" className="hover:text-primary transition-colors">Privacy Policy</Link></li>
+            <li><Link to="/terms-and-conditions" className="hover:text-primary transition-colors">Terms of Service</Link></li>
+            <li><a href="#cta" className="hover:text-primary transition-colors">Careers</a></li>
           </ul>
         </div>
 
         <div>
-          <h4 className="text-white font-semibold mb-6">Contact Us</h4>
-          <ul className="space-y-4 text-sm text-white/50">
-            <li className="flex items-center gap-3">
-              <Mail size={16} className="text-[#00D1FF]" />
-              <span>info@brightsiteagency.com</span>
+          <h4 className="text-text-primary font-bold text-lg mb-8">Connect</h4>
+          <ul className="space-y-6 text-text-secondary">
+            <li className="flex items-start gap-4">
+              <div className="w-10 h-10 rounded-lg bg-surface flex items-center justify-center border border-primary/10 flex-shrink-0">
+                <Mail size={18} className="text-primary" />
+              </div>
+              <div>
+                <p className="text-xs text-text-secondary/60 uppercase tracking-widest font-black mb-1">Email</p>
+                <a href="mailto:hello@brightsite.agency" className="text-text-primary hover:text-primary transition-colors">hello@brightsite.agency</a>
+              </div>
             </li>
-            <li className="flex items-center gap-3">
-              <Phone size={16} className="text-[#00D1FF]" />
-              <span>+1 (555) 123-4567</span>
-            </li>
-            <li className="flex items-center gap-3">
-              <MapPin size={16} className="text-[#00D1FF]" />
-              <span>New York, NY</span>
+            <li className="flex items-start gap-4">
+              <div className="w-10 h-10 rounded-lg bg-surface flex items-center justify-center border border-primary/10 flex-shrink-0">
+                <MapPin size={18} className="text-primary" />
+              </div>
+              <div>
+                <p className="text-xs text-text-secondary/60 uppercase tracking-widest font-black mb-1">Global HQ</p>
+                <p className="text-text-primary">123 Tech Plaza, New York, NY</p>
+              </div>
             </li>
           </ul>
         </div>
       </div>
       
-      <div className="max-w-7xl mx-auto pt-8 border-t border-white/5 text-center text-white/30 text-xs">
-        <p>© {new Date().getFullYear()} Brightsite AI Agency. All rights reserved.</p>
+      <div className="container mx-auto pt-12 border-t border-primary/10 flex flex-col md:row items-center justify-between gap-8">
+        <p className="text-text-secondary/40 text-sm">
+          © {new Date().getFullYear()} BRIGHTSITE AI AGENCY. All rights reserved. Premium Build v4.0
+        </p>
+        <button 
+          onClick={scrollToTop}
+          className="w-12 h-12 rounded-xl bg-surface border border-primary/10 flex items-center justify-center text-primary hover:border-primary/40 hover:-translate-y-1 transition-all duration-300"
+        >
+          <ArrowUp size={20} />
+        </button>
       </div>
     </footer>
   );
