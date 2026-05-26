@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
-import { Box, Brain, TrendingUp, Search, Share2 } from 'lucide-react';
+import { Box, TrendingUp, Share2, LucideIcon } from 'lucide-react';
 
 const ServiceCard = ({ 
   title, 
@@ -10,7 +10,7 @@ const ServiceCard = ({
 }: { 
   title: string; 
   description: string; 
-  icon: any; 
+  icon: LucideIcon; 
   index: number 
 }) => {
   return (
@@ -45,7 +45,6 @@ const ServiceCard = ({
           whileHover={{ scale: 1.02 }}
           transition={{ duration: 0.5 }}
         >
-          {/* 3D placeholder or representative animation */}
           <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 flex items-center justify-center">
             <motion.div
               animate={{ 
@@ -63,7 +62,6 @@ const ServiceCard = ({
             </motion.div>
           </div>
           
-          {/* Content overlay */}
           <div className="absolute bottom-8 left-8 right-8 p-6 glass-card border-white/10">
             <div className="text-xs uppercase tracking-[0.2em] text-primary font-bold mb-2">Service 0{index + 1}</div>
             <div className="text-lg font-bold">{title}</div>
@@ -91,30 +89,19 @@ const Services = () => {
       icon: Box,
     },
     {
-      title: "Autonomous AI Agent Integration",
-      description: "Embed intelligence directly into your workflow. Our custom AI agents handle customer support, sales, and data processing while you sleep.",
-      icon: Brain,
-    },
-    {
       title: "High-Velocity Lead Generation",
       description: "Turn your website into a 24/7 sales machine. Our scroll-driven narratives are engineered to guide prospects through a journey toward action.",
       icon: TrendingUp,
     },
     {
-      title: "Data-Driven SEO Optimization",
-      description: "Visibility is the foundation of growth. We implement enterprise-grade SEO strategies that ensure your brand dominates search rankings.",
-      icon: Search,
-    },
-    {
       title: "Unified Ecosystem Integrations",
-      description: "Connect your entire business. From DoorDash and Grubhub for restaurants to custom CRM and billing pipelines, we automate it all.",
+      description: "Connect your entire business. From DoorDash and Grubhub for restaurants to custom automated pipelines, we sync your digital world.",
       icon: Share2,
     }
   ];
 
   return (
     <section id="services" ref={containerRef} className="relative py-32 overflow-hidden bg-background">
-      {/* Parallax Background Elements */}
       <motion.div style={{ y: y1 }} className="absolute top-1/4 right-[-10%] w-96 h-96 bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
       <motion.div style={{ y: y2 }} className="absolute bottom-1/4 left-[-10%] w-96 h-96 bg-secondary/5 rounded-full blur-[120px] pointer-events-none" />
 
