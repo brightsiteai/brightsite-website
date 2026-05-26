@@ -21,7 +21,7 @@ const CTA = () => {
 
   return (
     <section ref={containerRef} className="py-32 relative overflow-hidden bg-background" id="cta">
-      {/* Decorative Background */ Rose glow }
+      {/* Decorative Background: Rose glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px] pointer-events-none" />
       
       <div className="container mx-auto px-6">
