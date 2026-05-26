@@ -4,7 +4,7 @@ import { Check, Zap } from 'lucide-react';
 const plans = [
   {
     name: "Seed",
-    price: "2,500",
+    price: "899",
     description: "Perfect for high-impact startups needing a professional 3D landing page.",
     features: [
       "Custom 3D Hero Section",
@@ -17,8 +17,8 @@ const plans = [
     highlight: false
   },
   {
-    name: "Growth",
-    price: "5,000",
+    name: "Next Tier",
+    price: "1,249",
     description: "The agency standard. Immersive storytelling for growing businesses.",
     features: [
       "Full 3D Immersive Website",
@@ -32,8 +32,8 @@ const plans = [
     highlight: true
   },
   {
-    name: "Professional",
-    price: "10,000",
+    name: "Custom",
+    price: "5,000",
     description: "Full-scale digital transformation with custom 3D logic and integrations.",
     features: [
       "Custom WebGL Environment",

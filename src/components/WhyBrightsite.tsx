@@ -67,7 +67,7 @@ const WhyBrightsite = () => {
             <div className="space-y-8">
               {[
                 "98% Client Satisfaction Rate",
-                "Average 3.5x ROI within 12 Months",
+                "Scalable High-Performance Results",
                 "100% Custom Work - No Templates"
               ].map((text, i) => (
                 <motion.div 

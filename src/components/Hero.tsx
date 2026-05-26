@@ -81,7 +81,7 @@ const Hero = () => {
           </h1>
           
           <p className="text-xl md:text-2xl text-text-secondary max-w-3xl mx-auto mb-12 leading-relaxed font-medium">
-            We bridge the gap between imagination and digital excellence using advanced 3D technology and autonomous AI agents.
+            We bridge the gap between imagination and digital excellence using advanced 3D technology and immersive storytelling.
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
