@@ -1,7 +1,17 @@
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useRef } from 'react';
 import { ArrowRight } from 'lucide-react';
 
 const CTA = () => {
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
+
+  const scale = useTransform(scrollYProgress, [0, 0.5], [0.8, 1]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
+
   const handleScrollToContact = () => {
     const element = document.getElementById('contact');
     if (element) {
@@ -10,45 +20,46 @@ const CTA = () => {
   };
 
   return (
-    <section className="py-24 relative overflow-hidden" id="cta">
-      {/* Decorative Background */}
-      <div className="absolute inset-0 bg-primary/5 -z-10" />
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/10 rounded-full blur-[120px] -translate-y-1/2" />
+    <section ref={containerRef} className="py-32 relative overflow-hidden bg-background" id="cta">
+      {/* Decorative Background */ Rose glow }
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px] pointer-events-none" />
       
       <div className="container mx-auto px-6">
-        <div className="glass-card p-12 md:p-20 text-center relative overflow-hidden">
+        <motion.div 
+          style={{ scale, opacity }}
+          className="glass-card p-16 md:p-32 text-center relative overflow-hidden border-primary/20 shadow-[0_0_50px_rgba(0,212,170,0.1)]"
+        >
           {/* Subtle grid pattern */}
-          <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, var(--color-primary) 1px, transparent 0)', backgroundSize: '40px 40px' }} />
+          <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'linear-gradient(to right, #00D4AA 1px, transparent 1px), linear-gradient(to bottom, #00D4AA 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
           
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="relative z-10"
-          >
-            <h2 className="text-4xl md:text-6xl font-black mb-8 leading-tight text-text-primary">
-              Ready to Build the <br />
-              <span className="gradient-text">Future Together?</span>
-            </h2>
-            <p className="text-text-secondary text-xl max-w-2xl mx-auto mb-12">
-              Don't settle for a static website when you can have an immersive digital experience that captivates your audience.
+          <div className="relative z-10">
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-5xl md:text-8xl font-black mb-10 leading-tight text-text-primary tracking-tighter"
+            >
+              Ready to <span className="gradient-text">Dominate</span> <br />
+              The Digital Space?
+            </motion.h2>
+            <p className="text-text-secondary text-xl md:text-2xl max-w-3xl mx-auto mb-16 leading-relaxed font-medium">
+              Join the ranks of visionaries who have transformed their online presence into a high-performance ecosystem. 
             </p>
             
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-              <button 
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-8">
+              <button
                 onClick={handleScrollToContact}
-                className="btn-cta text-lg px-10 py-5 w-full sm:w-auto flex items-center justify-center group"
+                className="btn-cta text-xl px-12 py-6 w-full sm:w-auto flex items-center justify-center group shadow-2xl"
               >
-                Start Your Project
-                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform" />
+                Launch Your Project
+                <ArrowRight className="w-6 h-6 ml-3 group-hover:translate-x-2 transition-transform" />
               </button>
-              <button className="px-10 py-5 rounded-xl border border-primary/20 hover:border-primary/50 text-text-primary font-bold transition-all w-full sm:w-auto">
-                View Portfolio
+              <button className="px-12 py-6 rounded-2xl border-2 border-white/10 hover:border-primary/40 text-text-primary font-bold text-xl transition-all w-full sm:w-auto hover:bg-white/5">
+                View Our Process
               </button>
             </div>
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
